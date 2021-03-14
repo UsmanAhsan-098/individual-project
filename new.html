@@ -33,7 +33,7 @@
 
         <main>
             <div v-if="showproduct">
-                <h3>subjects aart</h3>
+                <h3>subjects art</h3>
                 <ul>
             <li><button v-on:click="sortbyloca(products.location)"> sortbylocation </button></li>
             <li><button v-on:click="sortbyprice(products.price)"> sortbyprice </button> </li>
@@ -65,17 +65,20 @@
             <h2>Checkout</h2>
             <P>
             <strong>NAME: </strong>
-            <input v-model.trim="order.name"/>
+            <input type="text" v-model.trim="order.name"/>
             </P>
             <P>
             <strong>PHONE: </strong>
-            <input v-model.number="order.phone"/>
+            <input  v-model.number="order.phone" type="tel"/>
            </P>
 
-           <P>
-               NAME: {{order.name}}
-               PHONE: {{order.phone}}
-           </P>
+           
+             <P>NAME: {{order.name}}</P>
+
+             <P> PHONE: {{order.phone}}</P>
+
+             <P><button v-on:click="submitForm">confirm order</button></P>
+           
 
 
 
@@ -186,6 +189,10 @@
                         return 0;
                     }
                     return this.products.sort(compare)
+                },
+
+                submitForm() {
+                    alert('Order submitted!')
                 },
                 
             },
